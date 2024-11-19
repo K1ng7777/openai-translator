@@ -4,8 +4,8 @@
         "lib": ["DOM", "DOM.Iterable", "es2015"],
         "allowJs": false,
         "useDefineForClassFields": true,
-        "module": "commonjs",
-        "target": "es2015",
+        "module": "ESNext",
+        "target": "es2017",
         "skipLibCheck": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
@@ -16,10 +16,12 @@
         "noEmit": true,
         "noEmitOnError": true,
         "jsx": "react-jsx",
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "resolveJsonModule": true
+        "typeRoots": ["node_modules/@types/", "node_modules"],
+        "resolveJsonModule": true,
+        "types": ["vite-plugin-svgr/client", "vite/client", "chrome", "tampermonkey"],
+        "paths": {
+            "@/*": ["./src/*"]
+        }
     },
-    "include": ["src", "src-tauri"]
+    "include": ["src", "src-tauri", "vite.config*.ts", ".eslintrc.js", "playwright.config.ts", "e2e"]
 }

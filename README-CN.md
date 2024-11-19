@@ -50,8 +50,6 @@
 
 # 既是浏览器插件也是跨平台桌面端应用！
 
-**请注意！桌面端应用不支持划词后弹出图标，划词后必须按下快捷键才能够触发划词翻译**
-
 <p align="center">
   <img width="560" src="https://user-images.githubusercontent.com/1206493/223899374-ff386436-63b8-4618-afdd-fed2e6b48d56.png" />
 </p>
@@ -71,7 +69,9 @@
 5. 支持一键复制
 6. 支持 TTS
 7. 有桌面端应用，全平台（Windows + macOS + Linux）支持！
-8. 同时支持 [OpenAI](https://openai.com/) 和 [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service)
+8. 支持截图翻译
+9. 支持生词本，同时支持基于生词本里的单词生成帮助记忆的内容
+10. 同时支持 [OpenAI](https://openai.com/) 和 [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service)
 
 # 使用准备
 
@@ -82,23 +82,9 @@
 
 ## Windows
 
-### 通过 [winget](https://github.com/microsoft/winget-cli) 安装 (仅支持 windows)
-
-```sh
-winget install yetone.OpenAITranslator
-```
-
-
-### 通过 [Scoop](https://scoop.sh)
-
-```powershell
-scoop bucket add extras
-scoop install openai-translator
-```
-
 ### 手动安装
 
-1. 在 [Latest Release](https://github.com/yetone/openai-translator/releases/latest) 页面下载以 `.msi` 结尾的安装包
+1. 在 [Latest Release](https://github.com/yetone/openai-translator/releases/latest) 页面下载以 `.exe` 结尾的安装包
 2. 下载完成后双击安装包进行安装
 3. 如果提示不安全，可以点击 `更多信息` -> `仍要运行` 进行安装
 4. 开始使用吧！
@@ -138,6 +124,14 @@ scoop install openai-translator
       <img width="600" src="https://user-images.githubusercontent.com/1206493/224536277-4200f58e-8dc0-4c01-a27a-a30d7d8dc69e.gif" />
     </p>
 
+## 安装桌面端划词扩展
+
+详情请见 [桌面端划词扩展](./CLIP-EXTENSIONS-CN.md)
+
+  <p align="center">
+    <img width="600" src="https://user-images.githubusercontent.com/1206493/240355949-8f41d98d-f097-4ce4-a533-af60e1757ca1.gif" />
+  </p>
+
 ## 浏览器插件
 
 1. 访问你使用的浏览器的插件市场安装此插件：
@@ -159,21 +153,28 @@ scoop install openai-translator
 
 3. 刷新浏览器页面，即可享受丝滑般的划词翻译体验 🎉
 
+## 配置 Azure OpenAI Service
+
+```ts
+const API_URL = `https://${resourceName}.openai.azure.com`
+const API_URL_PATH = `/openai/deployments/${deployName}/chat/completions?api-version=${apiVersion}`
+```
+
+- resourceName: 你的 Azure OpenAI Service 资源名称。
+- deployName: 你的 Azure OpenAI Service 模型部署名称，更改部署名称以切换模型。
+- api-version: 2023-05-15，或者更新的版本。（受支持的API version列表可以在[Azure官方文档](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#completions)查找）
+
 # License
 
 [LICENSE](./LICENSE)
-
-# 请作者喝一杯咖啡
-
-<p align="center">
-  <img height="360" src="https://user-images.githubusercontent.com/1206493/220753437-90e4039c-d95f-4b6a-9a08-b3d6de13211f.png" />
-  <img height="360" src="https://user-images.githubusercontent.com/1206493/220756036-d9ac4512-0375-4a32-8c2e-8697021058a2.png" />
-</p>
 
 # Star 历史
 
 <p align="center">
   <a target="_blank" href="https://star-history.com/#yetone/openai-translator&Date">
-    <img src="https://api.star-history.com/svg?repos=yetone/openai-translator&type=Date" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=yetone/openai-translator&type=Date&theme=dark">
+      <img alt="NebulaGraph Data Intelligence Suite(ngdi)" src="https://api.star-history.com/svg?repos=yetone/openai-translator&type=Date">
+    </picture>
   </a>
 </p>

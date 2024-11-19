@@ -1,5 +1,7 @@
 # See https://github.com/crate-ci/typos/blob/master/docs/reference.md to configure typos
 [default.extend-words]
 Readed = "Readed"
+Sie = "Sie"
+OT = "OT"
 [files]
-extend-exclude = ["public/*", "dist/*", "src/common/geo-data.ts"]
+extend-exclude = ["public/*", "dist/*", "src/common/geo-data.ts", "pnpm-lock.yaml", "*.storyboard", "src-tauri/gen/*", "src/common/i18n/locales/tr/*"]

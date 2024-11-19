@@ -1,20 +1,18 @@
-import { useEffect, useState } from 'react'
-import { ThemeType } from '../types'
-import { useSettings } from './useSettings'
+import useSWR from 'swr'
+import { getSettings } from '../utils'
 
 export const useThemeType = () => {
-    const [themeType, setThemeType] = useState<ThemeType>('followTheSystem')
-
-    const { settings } = useSettings()
-
-    useEffect(() => {
-        if (settings?.themeType) {
-            setThemeType(settings.themeType)
-        }
-    }, [settings])
+    const { data: themeType, mutate: refreshThemeType } = useSWR(
+        'themeType',
+        async () => {
+            const settings = await getSettings()
+            return settings.themeType
+        },
+        { suspense: true }
+    )
 
     return {
-        themeType,
-        setThemeType,
+        themeType: themeType ?? 'light',
+        refreshThemeType,
     }
 }

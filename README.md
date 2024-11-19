@@ -49,8 +49,6 @@ I have developed a [Bob](https://bobtranslate.com/) [plugin](https://github.com/
 
 What began as a Chrome extension has now evolved into a multi-platform desktop app that I am currently developing.
 
-**Attention! The desktop application does not support the pop-up icon after word selection. You must press the shortcut key to trigger the translation after selecting a word.**
-
 <p align="center">
   <img width="560" src="https://user-images.githubusercontent.com/1206493/223899374-ff386436-63b8-4618-afdd-fed2e6b48d56.png" />
 </p>
@@ -74,7 +72,9 @@ What began as a translation tool has now evolved to include surprisingly effecti
 5. One-click copying
 6. Text-to-Speech (TTS)
 7. Available on all platforms (Windows, macOS, and Linux) for both browsers and Desktop
-8. Supports both [OpenAI](https://openai.com/) and [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service) at the same time
+8. Support screenshot translation
+9. Support for vocabulary books, as well as support for generating memory aids based on the words in the vocabulary books
+10. Supports both [OpenAI](https://openai.com/) and [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service) at the same time
 
 # Preparation
 
@@ -85,22 +85,9 @@ What began as a translation tool has now evolved to include surprisingly effecti
 
 ## Windows
 
-### Install via [winget](https://github.com/microsoft/winget-cli)
-
-```sh
-winget install yetone.OpenAITranslator
-```
-
-### Install via [Scoop](https://scoop.sh)
-
-```powershell
-scoop bucket add extras
-scoop install openai-translator
-```
-
 ### Install Manually
 
-1. Download the installation package ending in `.msi` from the [Latest Release](https://github.com/yetone/openai-translator/releases/latest) page.
+1. Download the installation package ending in `.exe` from the [Latest Release](https://github.com/yetone/openai-translator/releases/latest) page.
 2. Double click the downloaded file to install it.
 3. If prompted as unsafe, you can click on `More Info` -> `Run Anyway` to proceed with the installation.
 4. Ready to use!
@@ -138,6 +125,14 @@ scoop install openai-translator
       <img width="500" src="https://user-images.githubusercontent.com/1206493/224536148-eec559bf-4d99-48c1-bbd3-2cc105aff084.png" />
       <img width="600" src="https://user-images.githubusercontent.com/1206493/224536277-4200f58e-8dc0-4c01-a27a-a30d7d8dc69e.gif" />
     </p>
+
+## Installing Desktop Clip Extensions
+
+For details, see [Desktop Clip Extension](./CLIP-EXTENSIONS.md)
+
+  <p align="center">
+    <img width="600" src="https://user-images.githubusercontent.com/1206493/240355949-8f41d98d-f097-4ce4-a533-af60e1757ca1.gif" />
+  </p>
  
 ## Browser Extension
 
@@ -160,21 +155,28 @@ scoop install openai-translator
 
 3. Refresh the page in the browser to enjoy the smooth translation experience 🎉!
 
+## Configure Azure OpenAI Service
+
+```ts
+const API_URL = `https://${resourceName}.openai.azure.com`
+const API_URL_PATH = `/openai/deployments/${deployName}/chat/completions?api-version=${apiVersion}`
+```
+
+- resourceName: Your Azure OpenAI Service resource name.
+- deployName: Your Azure OpenAI Service model deploy name, you can change your model here.
+- api-version: 2023-05-15, or newer. (supported api-version can be found at [Azure's official doc](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#completions))
+
 # License
 
 [LICENSE](./LICENSE)
-
-# Buy me a coffee
-
-<p align="center">
-  <img height="360" src="https://user-images.githubusercontent.com/1206493/220753437-90e4039c-d95f-4b6a-9a08-b3d6de13211f.png" />
-  <img height="360" src="https://user-images.githubusercontent.com/1206493/220756036-d9ac4512-0375-4a32-8c2e-8697021058a2.png" />
-</p>
 
 # Star History
 
 <p align="center">
   <a target="_blank" href="https://star-history.com/#yetone/openai-translator&Date">
-    <img src="https://api.star-history.com/svg?repos=yetone/openai-translator&type=Date" />
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=yetone/openai-translator&type=Date&theme=dark">
+      <img alt="NebulaGraph Data Intelligence Suite(ngdi)" src="https://api.star-history.com/svg?repos=yetone/openai-translator&type=Date">
+    </picture>
   </a>
 </p>
